@@ -3189,9 +3189,21 @@ proc CreateToolbar {p} {
     eval pack [ ttk::button $p.tb.zoomall -image $::Info(Img,zoomall) -command ZoomAll \
 		    $opt $val] -side left
     eval pack [ ttk::button $p.tb.zoomsel -image $::Info(Img,zoomsel) -command ZoomSel \
-		    $opt $val] -side left
+		    $opt $val] -side left	
+		    
     pack [ ttk::frame $p.tb.sep4 -borderwidth 1 -relief sunken -width 2] -side left \
 	-fill y -padx 4 -anchor w -pady 2
+	eval pack [ ttk::button $p.tb.firstfile  -text "<<" -command FirstFile \
+		    $opt $val] -side left
+	eval pack [ ttk::button $p.tb.backfile  -text "<" -command BackFile \
+		    $opt $val] -side left
+	eval pack [ ttk::button $p.tb.nextfile  -text ">" -command NextFile \
+		    $opt $val] -side left
+	eval pack [ ttk::button $p.tb.lastfile  -text ">>" -command LastFile \
+		    $opt $val] -side left
+		    
+	pack [ ttk::frame $p.tb.sep5 -borderwidth 1 -relief sunken -width 2] -side left \
+	-fill y -padx 4 -anchor w -pady 2	
     pack [ ttk::label $p.tb.time -text 00.000 -relief flat] \
 	-side left
     
