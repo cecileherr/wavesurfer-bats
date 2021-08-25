@@ -27,9 +27,9 @@ From time to time I (will) add a few functions to the programme to facilitate an
 ### Added:
 
 - 2 new colour scales red-green-blue
+- buttons to navigate between sounds within a folder
 
 ### Will be added soon:
 
-- buttons to navigate between sounds within a folder
 - a prefs to close the open sound when navigating to the next one
 - configuration files for bat sounds
