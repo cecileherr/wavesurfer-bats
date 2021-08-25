@@ -1120,6 +1120,65 @@ proc Zoom {v} {
  $w configure -pixelspersecond $pps
 }
 
+proc FirstFile {} {
+ set w [::wsurf::GetCurrent]
+ set path [GetCurrentPath]
+ if {$path != ""} {
+  	set listwav [glob -directory $path -nocomplain  *{.wav,.WAV}*]
+  	set indexcur [lsearch $listwav [$w getInfo fileName]]  	
+  	if {[$w getInfo fileName] != [lindex $listwav 0]} {
+  		OpenFile [lindex $listwav 0]
+ 	}  else {
+ 	tk_messageBox -message "First file of the folder already open" -type ok
+ 	}   
+ }
+}
+
+proc BackFile {} {
+ set w [::wsurf::GetCurrent]
+ set path [GetCurrentPath]
+  if {$path != ""} {
+  	set listwav [glob -directory $path -nocomplain  *{.wav,.WAV}*]
+  	set indexcur [lsearch $listwav [$w getInfo fileName]]  	
+  	if {[$w getInfo fileName] != [lindex $listwav 0]} {
+		set indback [expr {$indexcur -1}]
+		OpenFile [lindex $listwav $indback]
+ 	}  else {
+ 	tk_messageBox -message "First file of the folder already open" -type ok
+ 	}    
+ }
+}
+
+proc NextFile {} {
+ set w [::wsurf::GetCurrent]
+ set path [GetCurrentPath] 
+  if {$path != ""} {
+  	set listwav [glob -directory $path -nocomplain  *{.wav,.WAV}*]
+  	set indexcur [lsearch $listwav [$w getInfo fileName]]  	
+  	if {[$w getInfo fileName] != [lindex $listwav end]} {
+		set indnext [expr {$indexcur +1}]
+		OpenFile [lindex $listwav $indnext]
+ 	}  else {
+ 	tk_messageBox -message "Last file of the folder already open" -type ok
+ 	}    
+ }
+}
+
+proc LastFile {} {
+ set w [::wsurf::GetCurrent]
+ set path [GetCurrentPath] 
+   if {$path != ""} {
+  	set listwav [glob -directory $path -nocomplain  *{.wav,.WAV}*]
+  	set indexcur [lsearch $listwav [$w getInfo fileName]]  	
+  	if {[$w getInfo fileName] != [lindex $listwav end]} {
+		OpenFile [lindex $listwav end]
+ 	} else {
+ 	tk_messageBox -message "Last file of the folder already open" -type ok
+ 	}    
+ }
+}
+
+
 proc Paste {} {
  set w [::wsurf::GetCurrent]
  BreakIfInvalid $w
@@ -1865,7 +1924,7 @@ proc Normalize {} {
  grid $tl.f  -sticky ew
  grid $tl.cb1  -sticky ew
  grid $tl.cb2  -sticky ew
- grid columnconfigure $tl 0 -weight 1 ;# vad gör denna?
+ grid columnconfigure $tl 0 -weight 1 ;# vad gÃ¶r denna?
 
  insertOKCancelButtons2 $tl.f3 "DoNormalize $w;destroy $tl" "destroy $tl"
 
