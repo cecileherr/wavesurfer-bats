@@ -286,6 +286,7 @@ proc wsurf::Initialize {args} {
     set Info(Prefs,recordLimit) 600
     set Info(Prefs,linkFile) 0
     set Info(Prefs,autoScroll) None
+    set Info(Prefs,throughFiles) "Let current sound open"
     set Info(Prefs,defaultConfig) ""
     set Info(Prefs,showLevel) 1
     set Info(Prefs,prefsWithConf) 0
@@ -433,6 +434,7 @@ proc wsurf::SetDefaultPrefs:OBSOLETE {} {
  set Info(Prefs,t,linkFile) 0
  set Info(Prefs,t,storage) "load into memory"
  set Info(Prefs,t,autoScroll) None
+ set Info(Prefs,t,throughFiles) "Let current sound open"
  set Info(Prefs,t,defaultConfig) "Show dialog"
  set Info(Prefs,t,showLevel) 1
  set Info(Prefs,t,prefsWithConf) 0
@@ -2929,7 +2931,7 @@ proc wsurf::ApplyPreferences {} {
     variable Info
     
     foreach var [list outDev inDev PrintCmd PrintPVCmd recordLimit linkFile \
-		     autoScroll maxPixelsPerSecond tmpDir icons popupEvent defaultConfig \
+		     autoScroll throughFiles maxPixelsPerSecond tmpDir icons popupEvent defaultConfig \
 		     timeFormat showLevel defRate defEncoding defChannels createWidgets \
 		     rawFormats prefsWithConf yaxisWidth theme beg play playall playloop pause \
 		     stop record close end print zoomin zoomout zoomall zoomsel] {
@@ -2993,7 +2995,7 @@ proc wsurf::_miscPage {p} {
 	destroy $f	
     }
     
-    foreach var [list  autoScroll maxPixelsPerSecond icons popupEvent \
+    foreach var [list  autoScroll throughFiles maxPixelsPerSecond icons popupEvent \
 		     defaultConfig createWidgets \
 		     timeFormat yaxisWidth prefsWithConf theme beg play playall \
 		     playloop pause \
@@ -3107,7 +3109,12 @@ proc wsurf::_miscPage {p} {
     ttk::combobox $p.f10.om -textvariable [namespace current]::Info(Prefs,t,theme) -state readonly -values $Info(themes)
     pack $p.f10.l $p.f10.om -side left
 
-
+    pack [ttk::frame $p.f11] -anchor w -ipady 2
+    ttk::label $p.f11.l -text "When navigating between sounds:" -width 26 -anchor w
+    ttk::combobox $p.f11.om -textvariable [namespace current]::Info(Prefs,t,throughFiles) -state readonly -values {
+	"Close current sound" "Let current sound open"
+    }
+    pack $p.f11.l $p.f11.om -side left
 }
 
 
