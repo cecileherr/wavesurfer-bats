@@ -1127,7 +1127,12 @@ proc FirstFile {} {
   	set listwav [glob -directory $path -nocomplain  *{.wav,.WAV}*]
   	set indexcur [lsearch $listwav [$w getInfo fileName]]  	
   	if {[$w getInfo fileName] != [lindex $listwav 0]} {
-  		OpenFile [lindex $listwav 0]
+  		if {$::wsurf::Info(Prefs,throughFiles) == "Close current sound"} {
+  			# Remember this configuration for next sound
+  			set keepsameconfig [$::wsurf::Info(current) cget -configuration]
+  			wsurf::closeWidget $w  
+  		}
+  		OpenFile [lindex $listwav 0] "$keepsameconfig"
  	}  else {
  	tk_messageBox -message "First file of the folder already open" -type ok
  	}   
@@ -1141,8 +1146,13 @@ proc BackFile {} {
   	set listwav [glob -directory $path -nocomplain  *{.wav,.WAV}*]
   	set indexcur [lsearch $listwav [$w getInfo fileName]]  	
   	if {[$w getInfo fileName] != [lindex $listwav 0]} {
+		if {$::wsurf::Info(Prefs,throughFiles) == "Close current sound"} {
+  			# Remember this configuration for next sound
+  			set keepsameconfig [$::wsurf::Info(current) cget -configuration]
+  			wsurf::closeWidget $w
+  			}
 		set indback [expr {$indexcur -1}]
-		OpenFile [lindex $listwav $indback]
+		OpenFile [lindex $listwav $indback] "$keepsameconfig"
  	}  else {
  	tk_messageBox -message "First file of the folder already open" -type ok
  	}    
@@ -1156,8 +1166,13 @@ proc NextFile {} {
   	set listwav [glob -directory $path -nocomplain  *{.wav,.WAV}*]
   	set indexcur [lsearch $listwav [$w getInfo fileName]]  	
   	if {[$w getInfo fileName] != [lindex $listwav end]} {
+		if {$::wsurf::Info(Prefs,throughFiles) == "Close current sound"} {
+  			# Remember this configuration for next sound
+  			set keepsameconfig [$::wsurf::Info(current) cget -configuration]
+  			wsurf::closeWidget $w
+  			}
 		set indnext [expr {$indexcur +1}]
-		OpenFile [lindex $listwav $indnext]
+		OpenFile [lindex $listwav $indnext] "$keepsameconfig"
  	}  else {
  	tk_messageBox -message "Last file of the folder already open" -type ok
  	}    
@@ -1171,7 +1186,12 @@ proc LastFile {} {
   	set listwav [glob -directory $path -nocomplain  *{.wav,.WAV}*]
   	set indexcur [lsearch $listwav [$w getInfo fileName]]  	
   	if {[$w getInfo fileName] != [lindex $listwav end]} {
-		OpenFile [lindex $listwav end]
+		if {$::wsurf::Info(Prefs,throughFiles) == "Close current sound"} {
+  			# Remember this configuration for next sound
+  			set keepsameconfig [$::wsurf::Info(current) cget -configuration]
+  			wsurf::closeWidget $w
+  			}
+		OpenFile [lindex $listwav end] "$keepsameconfig"
  	} else {
  	tk_messageBox -message "Last file of the folder already open" -type ok
  	}    
