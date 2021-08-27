@@ -22,6 +22,7 @@ From time to time I (will) add a few functions to the programme to facilitate an
 ### Disclaimer: 
 
 - I have more or less 0 knowledge of TCL/TK programming. Do not expect good examples of coding in this repository.
+- Based on version 1.8.8p4
 - Customizations developed and tested only on an old version of Mac OS X, use at your own risk.
 
 ### Added:
@@ -33,3 +34,4 @@ From time to time I (will) add a few functions to the programme to facilitate an
 ### Will be added soon:
 
 - configuration files for bat sounds
+- spectrum section: select 'average of selection' by default
