@@ -2635,7 +2635,7 @@ proc RegTypesDialog {} {
 }
 
 proc About {} {
- tk_messageBox -title "About WaveSurfer" -message "WaveSurfer 1.8.8p4-1112300908\nCopyright (c) 2000-2011 Jonas Beskow and Kare Sjolander\n"
+ tk_messageBox -title "About WaveSurfer" -message "WaveSurfer 1.8.8p4-1112300908\nCopyright (c) 2000-2011 Jonas Beskow and Kare Sjolander\nCustomized version for bat sounds\n"
 }
 
 if {![string match macintosh $::tcl_platform(platform)]} {
@@ -2728,7 +2728,7 @@ toplevel .x
 #wm iconbitmap .x snackPlay
 set Info(toplevels) .x
 wm withdraw .x
-wm title .x "WaveSurfer 1.8.8p4"
+wm title .x "WaveSurfer 1.8.8p4 Bats"
 wm minsize .x 200 1
 if {$::tcl_platform(os) == "Darwin"} {
     bind .x <Visibility> [list wm resizable .x 1 0]
