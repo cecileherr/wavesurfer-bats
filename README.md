@@ -30,8 +30,8 @@ From time to time I (will) add a few functions to the programme to facilitate an
 - 2 new colour scales red-green-blue
 - buttons to navigate between sounds within a folder
 - a new preference to close the current sound when navigating to the previous/next one or first/last one
+- configuration files for bat sounds (Mac version)
 
 ### Will be added soon:
 
-- configuration files for bat sounds
 - spectrum section: select 'average of selection' by default
