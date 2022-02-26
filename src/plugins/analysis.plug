@@ -1800,7 +1800,8 @@ proc analysis::openSectWindow {w pane} {
  set v(drawSection) 1
 
  foreach {left right} [$w cget -selection] break
- if {$left == $right} { set v(sall) 0 } else { set v(sall) 1 }
+ if {$left == $right} { set v(sall) 1 } else { set v(sall) 1 }
+ # keep average of selection checked
 
  pack [ttk::frame $e.f] -side bottom -fill x
  label $e.f.lab -width 1 -relief sunken -bd 1
