@@ -1837,24 +1837,26 @@ proc analysis::openSectWindow {w pane} {
  pack [ttk::frame $e.f2] -anchor w -fill x
 
  ttk::label $e.f2.l1 -text "Window:"
-    ttk::combobox $e.f2.m1 -textvariable [namespace current]::${pane}::var(swintype) -values [list Hamming Hanning Bartlett Blackman Rectangle] -state readonly
+    ttk::combobox $e.f2.m1 -textvariable [namespace current]::${pane}::var(swintype) -values [list Hamming Hanning Bartlett Blackman Rectangle] -state readonly -width 8
     bind $e.f2.l1 <<ComboboxSelected>> [namespace code [list drawSect $w $pane]]
 # for {set n 0} {$n < 5} {incr n} {
 #   $e.f2.m1.menu entryconfigure $n \
 #       -command [namespace code [list drawSect $w $pane]]
 # }
 
- ttk::label $e.f2.l2 -text "FFT points:" -anchor w
-    ttk::combobox $e.f2.m2 -textvariable [namespace current]::${pane}::var(sfftlen) -values [list 64 128 256 512 1024 2048 4096 8192 16384 32768 65536] -state readonly
+ ttk::label $e.f2.l2 -text "FFT pts:" -anchor w
+    ttk::combobox $e.f2.m2 -textvariable [namespace current]::${pane}::var(sfftlen) -values [list 64 128 256 512 1024 2048 4096 8192 16384 32768 65536] -state readonly -width 5
     bind $e.f2.m2 <<ComboboxSelected>> [namespace code [list drawSect $w $pane]]
 # for {set n 0} {$n < 11} {incr n} {
 #   $e.f2.m2.menu entryconfigure $n \
 #       -command [namespace code [list drawSect $w $pane]]
 # }
 
+ ttk::label $e.f2.ll2 -text "Bats fm:512 qfc:256" -foreground "grey50"
+
  pack $e.f2.l1 $e.f2.m1 -side left
-  pack [ttk::separator $e.f2.s1 -orient vertical] -side left -fill y -padx 10
- pack $e.f2.l2 $e.f2.m2 -side left
+ pack [ttk::separator $e.f2.s1 -orient vertical] -side left -fill y -padx 10
+ pack $e.f2.l2 $e.f2.m2 $e.f2.ll2 -side left
 
  pack [ttk::frame $e.f3] -fill x
  pack [ttk::label $e.f3.l1 -text "Reference:" -anchor w] -side left
