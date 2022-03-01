@@ -32,5 +32,5 @@ From time to time I (will) add a few functions to the programme to facilitate an
 - a new preference to close the current sound when navigating to the previous/next one or first/last one
 - configuration files for bat sounds (Mac version)
 - spectrum section: select 'average of selection' by default
-
+- spectrum section: reminder to use FFT 256 for QCF and 512 for FM
 
