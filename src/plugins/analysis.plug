@@ -783,7 +783,7 @@ proc analysis::cursorMoved {w pane time value} {
    set timestr [$w formatTime $time]
  } else {
    set timestr \
-     "from [$w formatTime $left] to [$w formatTime $right] length [$w formatTime [expr {$right-$left}]], [$w formatTime $time]"
+     "Selection from [$w formatTime $left] to [$w formatTime $right] Length [$w formatTime [expr {$right-$left}]] - Cursor at [$w formatTime $time]"
  }
  
  if {$v(drawWaveform)} {
